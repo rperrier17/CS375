@@ -110,6 +110,6 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         return true;
     }
 
-    public void myClickHandler(){}
+    public void myClickHandler(View v){}
 
 }

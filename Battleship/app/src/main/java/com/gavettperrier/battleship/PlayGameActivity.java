@@ -41,4 +41,6 @@ public class PlayGameActivity extends AppCompatActivity {
         }
         //NEED TO MAKE IT SO PRESSING BUTTON WILL PERMANENTLY CHANGE COLOR!!!!!!!!!!!
     };
+
+    public void myClickHandler(View v) {}
 }
