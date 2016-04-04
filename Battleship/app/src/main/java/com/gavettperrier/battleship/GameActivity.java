@@ -71,15 +71,6 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip5.setLayoutParams(layoutParams);
         mShip5.setOnTouchListener(this);
 
-        View.OnClickListener myClickHandler = new View.OnClickListener(){
-            public void onClick(View v){
-                Button btn = (Button)findViewById(v.getId());
-                btn.getPaint().setColor(Color.RED);
-                btn.getPaint().setStyle(Paint.Style.STROKE);
-                btn.getPaint().setStrokeWidth(3);
-            }
-        };
-
         Button placeShips  = (Button)findViewById(R.id.startGameButton);
         placeShips.setOnClickListener(new View.OnClickListener() {
             @Override

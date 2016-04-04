@@ -911,6 +911,14 @@
         android:layout_below="@id/grid"
         android:background="#00ff00"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rotate Ship"
+        android:background="#008f00"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/startGameButton" />
+
     <!--
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gridview"
