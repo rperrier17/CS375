@@ -868,7 +868,6 @@
         android:id="@+id/ship2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/ship1"
         android:background="#f000ff"
         android:text= "
                                 "/>
@@ -878,7 +877,6 @@
         android:id="@+id/ship3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/ship2"
         android:text="
                                 "
         android:background="#FBFF15"/>
@@ -886,22 +884,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ship4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/ship3"
         android:text="
                     "
-        android:background="#000CCB"/>
+        android:background="#000CCB"
+        android:layout_marginStart="49dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ship5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/ship4"
+        android:layout_marginTop="70dp"
         android:text="
                                         "
-        android:background="#FF6A06"/>
+        android:background="#FF6A06"
+        android:layout_toStartOf="@+id/ship3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -918,21 +913,5 @@
         android:background="#008f00"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/startGameButton" />
-
-    <!--
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="90dp"
-        android:numColumns="10"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        />-->
-
-
-
 
 </RelativeLayout>

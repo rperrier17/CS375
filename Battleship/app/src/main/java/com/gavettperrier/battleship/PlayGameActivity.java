@@ -29,15 +29,16 @@ public class PlayGameActivity extends AppCompatActivity {
             }
         });
 
-        View.OnClickListener myClickHandler = new View.OnClickListener(){
-            public void onClick(View v){
-                Button btn = (Button)findViewById(v.getId());
-                btn.getPaint().setColor(Color.RED);
-                btn.getPaint().setStyle(Paint.Style.STROKE);
-                btn.getPaint().setStrokeWidth(3);
-            }
-            //NEED TO MAKE IT SO PRESSING BUTTON WILL PERMANENTLY CHANGE COLOR!!!!!!!!!!!
-        };
-    }
 
+    }
+    
+    View.OnClickListener myClickHandler = new View.OnClickListener(){
+        public void onClick(View v){
+            Button btn = (Button)findViewById(v.getId());
+            btn.getPaint().setColor(Color.RED);
+            btn.getPaint().setStyle(Paint.Style.STROKE);
+            btn.getPaint().setStrokeWidth(3);
+        }
+        //NEED TO MAKE IT SO PRESSING BUTTON WILL PERMANENTLY CHANGE COLOR!!!!!!!!!!!
+    };
 }

@@ -25,7 +25,7 @@ import android.view.MotionEvent;
 
 public class GameActivity extends AppCompatActivity implements View.OnTouchListener {
 
-    private TextView mImageView;
+    private TextView mShip1;
     private TextView mShip2;
     private TextView mShip3;
     private TextView mShip4;
@@ -53,15 +53,15 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mRrootLayout = (ViewGroup) findViewById(R.id.root);
-        mImageView = (TextView) mRrootLayout.findViewById(R.id.ship1);
+        mShip1 = (TextView) mRrootLayout.findViewById(R.id.ship1);
         mShip2 = (TextView) mRrootLayout.findViewById(R.id.ship2);
         mShip3 = (TextView) mRrootLayout.findViewById(R.id.ship3);
         mShip4 = (TextView) mRrootLayout.findViewById(R.id.ship4);
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
-        mImageView.setLayoutParams(layoutParams);
-        mImageView.setOnTouchListener(this);
+        mShip1.setLayoutParams(layoutParams);
+        mShip1.setOnTouchListener(this);
         mShip2.setLayoutParams(layoutParams);
         mShip2.setOnTouchListener(this);
         mShip3.setLayoutParams(layoutParams);
@@ -109,5 +109,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mRrootLayout.invalidate();
         return true;
     }
+
+    public void myClickHandler(){}
 
 }
