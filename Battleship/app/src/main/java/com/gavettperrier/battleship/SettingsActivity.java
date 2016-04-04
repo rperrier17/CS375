@@ -34,12 +34,10 @@ public class SettingsActivity extends AppCompatActivity {
         public void onClick(View v){
                 TextView musicview = (TextView) findViewById(R.id.musictext);
                 if(musicbutton.isChecked()){
-                    musicbutton.setChecked(false);
-                    musicview.setText("Music Disabled");
+                    musicview.setText("Music Enabled");
                 }
                 else{
-                    musicbutton.setChecked(true);
-                    musicview.setText("Music Enabled");
+                    musicview.setText("Music Disabled");
                 }
 
             }
@@ -51,12 +49,10 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v){
                 TextView soundview = (TextView) findViewById(R.id.soundtext);
                 if(soundbutton.isChecked()){
-                    soundbutton.setChecked(false);
-                    soundview.setText("Music Disabled");
+                    soundview.setText("Sound Enabled");
                 }
                 else{
-                    soundbutton.setChecked(true);
-                    soundview.setText("Music Enabled");
+                    soundview.setText("Sound Disabled");
                 }
 
             }
