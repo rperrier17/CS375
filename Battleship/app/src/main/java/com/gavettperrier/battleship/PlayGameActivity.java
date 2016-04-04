@@ -13,6 +13,8 @@ import android.widget.Button;
 
 public class PlayGameActivity extends AppCompatActivity {
 
+    private Button selectedButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,27 +22,23 @@ public class PlayGameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button fire = (Button)findViewById(R.id.fireButton);
+
+        fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                selectedButton.setBackgroundColor(Color.RED);
             }
         });
 
 
     }
-    
-    View.OnClickListener myClickHandler = new View.OnClickListener(){
-        public void onClick(View v){
-            Button btn = (Button)findViewById(v.getId());
-            btn.getPaint().setColor(Color.RED);
-            btn.getPaint().setStyle(Paint.Style.STROKE);
-            btn.getPaint().setStrokeWidth(3);
-        }
-        //NEED TO MAKE IT SO PRESSING BUTTON WILL PERMANENTLY CHANGE COLOR!!!!!!!!!!!
-    };
 
-    public void myClickHandler(View v) {}
+    public void myClickHandler(View v) {
+        Button btn = (Button)findViewById(v.getId());
+        btn.getPaint().setColor(Color.RED);
+        btn.getPaint().setStyle(Paint.Style.STROKE);
+        btn.getPaint().setStrokeWidth(3);
+        selectedButton = btn;
+    }
 }

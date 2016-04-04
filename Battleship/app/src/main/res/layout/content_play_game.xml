@@ -853,6 +853,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/fireButton"
         android:text="FIRE!"
         android:background="#00ff00"
         android:layout_below="@id/grid"/>
