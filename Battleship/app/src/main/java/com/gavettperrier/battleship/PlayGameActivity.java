@@ -3,6 +3,7 @@ package com.gavettperrier.battleship;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -35,10 +36,13 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
     public void myClickHandler(View v) {
+        selectedButton.setBackgroundColor(Color.WHITE);
         Button btn = (Button)findViewById(v.getId());
-        btn.getPaint().setColor(Color.RED);
-        btn.getPaint().setStyle(Paint.Style.STROKE);
-        btn.getPaint().setStrokeWidth(3);
+        //btn.getPaint().setColor(Color.RED);
+        //btn.getPaint().setStyle(Paint.Style.STROKE);
+        //btn.getPaint().setStrokeWidth(3);
+        //btn.setHighlightColor(0000F0);
+        btn.setBackgroundColor(Color.YELLOW);
         selectedButton = btn;
     }
 }
