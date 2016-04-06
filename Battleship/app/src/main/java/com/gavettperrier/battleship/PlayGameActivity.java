@@ -28,7 +28,10 @@ public class PlayGameActivity extends AppCompatActivity {
         fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedButton.setBackgroundColor(Color.RED);
+                if (selectedButton != null) {
+                    selectedButton.setBackgroundColor(Color.RED);
+                    selectedButton = null;
+                }
             }
         });
 
@@ -36,7 +39,9 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
     public void myClickHandler(View v) {
-        selectedButton.setBackgroundColor(Color.WHITE);
+        if(selectedButton != null) {
+            selectedButton.setBackgroundColor(Color.WHITE);
+        }
         Button btn = (Button)findViewById(v.getId());
         //btn.getPaint().setColor(Color.RED);
         //btn.getPaint().setStyle(Paint.Style.STROKE);
