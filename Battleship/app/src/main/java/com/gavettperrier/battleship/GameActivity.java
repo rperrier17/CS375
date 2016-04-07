@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
         //Might not be showing all ships since same layout
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 300);
         mShip1.setLayoutParams(layoutParams);
         mShip1.setOnTouchListener(this);
         mShip2.setLayoutParams(layoutParams);
