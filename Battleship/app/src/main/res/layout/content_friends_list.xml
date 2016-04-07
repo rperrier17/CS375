@@ -26,5 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/removeFriend"
-        android:text="Remove Friend"/>
+        android:text="Remove Friend"
+        android:layout_toRightOf="@id/addFriend"/>
 </RelativeLayout>
