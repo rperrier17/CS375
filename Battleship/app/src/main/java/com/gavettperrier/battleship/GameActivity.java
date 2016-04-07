@@ -48,17 +48,20 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip4 = (TextView) mRrootLayout.findViewById(R.id.ship4);
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
-        //Might not be showing all ships since same layout
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 300);
         mShip1.setLayoutParams(layoutParams);
         mShip1.setOnTouchListener(this);
-        mShip2.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(150,450);
+        mShip2.setLayoutParams(layoutParams2);
         mShip2.setOnTouchListener(this);
-        mShip3.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(150,450);
+        mShip3.setLayoutParams(layoutParams3);
         mShip3.setOnTouchListener(this);
-        mShip4.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(150,600);
+        mShip4.setLayoutParams(layoutParams4);
         mShip4.setOnTouchListener(this);
-        mShip5.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(150,750);
+        mShip5.setLayoutParams(layoutParams5);
         mShip5.setOnTouchListener(this);
 
         Button placeShips  = (Button)findViewById(R.id.startGameButton);
