@@ -909,6 +909,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/rotateShipButton"
         android:text="Rotate Ship"
         android:background="#008f00"
         android:layout_alignParentBottom="true"

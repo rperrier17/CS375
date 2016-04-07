@@ -30,21 +30,10 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mShip3;
     private TextView mShip4;
     private TextView mShip5;
+    private TextView selectedShip;
     private ViewGroup mRrootLayout;
     private int _xDelta;
     private int _yDelta;
-
-    /*StateListDrawable makeHighlightable(Drawable drawable)
-    {
-        StateListDrawable res = new StateListDrawable();
-
-        Drawable clone = drawable.getConstantState().newDrawable();
-
-        clone.setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-        res.addState(new int[] {android.R.attr.state_pressed}, clone);
-        res.addState(new int[] { }, drawable);
-        return res;
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +48,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip4 = (TextView) mRrootLayout.findViewById(R.id.ship4);
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
+        //Might not be showing all ships since same layout
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
         mShip1.setLayoutParams(layoutParams);
         mShip1.setOnTouchListener(this);
@@ -80,8 +70,23 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
             }
         });
 
+        Button rotateShips = (Button)findViewById(R.id.rotateShipButton);
+        rotateShips.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(selectedShip != null){
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)selectedShip.getLayoutParams();
+                    int temp = params.height;
+                    params.height = params.width;
+                    params.width = temp;
+                    selectedShip.setLayoutParams(params);
+                }
+            }
+        });
+
     }
     public boolean onTouch(View view, MotionEvent event) {
+        selectedShip = (TextView) view;
         final int X = (int) event.getRawX();
         final int Y = (int) event.getRawY();
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
