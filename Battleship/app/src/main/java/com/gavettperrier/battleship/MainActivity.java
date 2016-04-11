@@ -16,7 +16,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +28,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Test Parse
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo","bar");
-        testObject.saveInBackground();
+
+
+        //ParseObject testObject = new ParseObject("TestObject");
+        //testObject.put("foo","bar");
+        //testObject.saveInBackground();
+
+        ParseUser user = new ParseUser();
+        user.setUsername("test");
+        user.setPassword("test2");
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                //if (e == null)
+                    //who knows?
+                //else
+
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
