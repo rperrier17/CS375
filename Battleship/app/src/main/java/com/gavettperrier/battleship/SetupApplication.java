@@ -16,6 +16,7 @@ public class SetupApplication extends Application {
        Parse.initialize(new Parse.Configuration.Builder(getBaseContext())
                 .applicationId("f1b626b8-cbb4-4dc7-b973-e98b2fa4de02")
                 .server("http://cs375bship.azurewebsites.net/parse")
+                       .clientKey(" ")
                 .build()
         );
     }
