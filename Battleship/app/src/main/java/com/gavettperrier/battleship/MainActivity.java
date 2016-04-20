@@ -23,6 +23,12 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -32,17 +38,34 @@ public class MainActivity extends AppCompatActivity {
         //Test Parse
 
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo","bar");
-        testObject.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null)
-                {
-                    Log.d("error", e.getLocalizedMessage());
-                }
+//        ParseObject testObject = new ParseObject("TestObject");
+//        testObject.put("foo","bar");
+//        testObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e != null)
+//                {
+//                    Log.d("error", String.valueOf(e.getCode()));
+//                }
+//            }
+//        });
+        try {
+            URL url = new URL("http://www.android.com");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                readStream(in);
             }
-        });
+            finally {
+
+                    urlConnection.disconnect();
+                }
+
+        } catch (Throwable t) {
+            //Log.d("error", t.getLocalizedMessage());
+        }
+
+
         //testObject.saveInBackground();
 
         /*ParseUser user = new ParseUser();
@@ -97,6 +120,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void readStream(InputStream in) {
+        
     }
 
     @Override
