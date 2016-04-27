@@ -63,7 +63,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(150,750);
         mShip5.setLayoutParams(layoutParams5);
         mShip5.setOnTouchListener(this);
-
+        
         Button placeShips  = (Button)findViewById(R.id.startGameButton);
         placeShips.setOnClickListener(new View.OnClickListener() {
             @Override

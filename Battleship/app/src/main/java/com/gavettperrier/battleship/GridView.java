@@ -6,10 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -24,6 +26,10 @@ public class GridView extends View {
     private TextPaint mTextPaint;
     private float mTextWidth;
     private float mTextHeight;
+
+    int numCells = 10;
+    protected int selCol = -1;
+    protected int selRow = -1;
 
     public GridView(Context context) {
         super(context);
@@ -88,7 +94,7 @@ public class GridView extends View {
 
         // TODO: consider storing these as member variables to reduce
         // allocations per draw cycle.
-        int paddingLeft = getPaddingLeft();
+        /*int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
         int paddingRight = getPaddingRight();
         int paddingBottom = getPaddingBottom();
@@ -107,9 +113,51 @@ public class GridView extends View {
             mExampleDrawable.setBounds(paddingLeft, paddingTop,
                     paddingLeft + contentWidth, paddingTop + contentHeight);
             mExampleDrawable.draw(canvas);
+        }*/
+
+        //This is the paint for each cell of the grid
+        Paint gridSquPaint = new Paint();
+        gridSquPaint.setColor(Color.WHITE);
+        gridSquPaint.setStrokeWidth(1);
+        gridSquPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+        //This is the paint for a highlighted square
+        Paint highlightSqPaint = new Paint();
+        highlightSqPaint.setColor(Color.GREEN);
+        highlightSqPaint.setStrokeWidth(1);
+        gridSquPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+        int cellWidth = getWidth() / numCells;
+        int cellHeight = getHeight() / numCells;
+
+        //Make the Grid
+        for(int row = 0; row < numCells; row++){
+            for (int col = 0; col < numCells; col++){
+                Paint p = gridSquPaint;
+                int x = row * cellWidth;
+                int y = col * cellHeight;
+                Rect rect = new Rect(x, y, x + cellWidth,y + cellHeight);
+                canvas.drawRect(rect,p);
+
+                if(selCol == col && selRow == row){
+
+                }
+            }
         }
 
+    }
 
+    //Make so we can select squares
+    public boolean onTouchEvent(MotionEvent event){
+        super.onTouchEvent(event);
+        float x = event.getX();
+        float y = event.getY();
+        float cellWidth = this.getWidth()/numCells;
+        float cellHeight = this.getHeight()/numCells;
+        selCol = (int)(x/cellWidth);
+        selRow = (int)(y/cellHeight);
+        invalidate();
+        return true;
     }
 
     StateListDrawable makeHighlightable(Drawable drawable)

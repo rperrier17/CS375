@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
         //Test Parse
 
 
-//        ParseObject testObject = new ParseObject("TestObject");
-//        testObject.put("foo","bar");
-//        testObject.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e != null)
-//                {
-//                    Log.d("error", String.valueOf(e.getCode()));
-//                }
-//            }
-//        });
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo","bar");
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null)
+                {
+                    Log.d("error", String.valueOf(e.getCode()));
+                }
+            }
+        });
         try {
             URL url = new URL("http://www.android.com");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
