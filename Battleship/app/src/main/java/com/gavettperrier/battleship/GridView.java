@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,8 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.util.ArrayList;
 
 /**
  * TODO: document your custom view class.
@@ -30,6 +33,7 @@ public class GridView extends View {
     int numCells = 10;
     protected int selCol = -1;
     protected int selRow = -1;
+    protected ArrayList<Point> firedSquares = new ArrayList<Point>();
 
     public GridView(Context context) {
         super(context);
@@ -125,7 +129,13 @@ public class GridView extends View {
         Paint highlightSqPaint = new Paint();
         highlightSqPaint.setColor(Color.GREEN);
         highlightSqPaint.setStrokeWidth(1);
-        gridSquPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        highlightSqPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+        //This is the paint for a fired at square
+        Paint hitSqPaint = new Paint();
+        hitSqPaint.setColor(Color.RED);
+        hitSqPaint.setStrokeWidth(1);
+        hitSqPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
         int cellWidth = getWidth() / numCells;
         int cellHeight = getHeight() / numCells;
@@ -137,11 +147,18 @@ public class GridView extends View {
                 int x = row * cellWidth;
                 int y = col * cellHeight;
                 Rect rect = new Rect(x, y, x + cellWidth,y + cellHeight);
-                canvas.drawRect(rect,p);
 
                 if(selCol == col && selRow == row){
-
+                    p = highlightSqPaint;
                 }
+                for(int i = 0; i < firedSquares.size(); i++)
+                {
+                    if(row == firedSquares.get(i).x && col == firedSquares.get(i).y)
+                    {
+                        p = hitSqPaint;
+                    }
+                }
+                canvas.drawRect(rect,p);
             }
         }
 
@@ -156,6 +173,7 @@ public class GridView extends View {
         float cellHeight = this.getHeight()/numCells;
         selCol = (int)(x/cellWidth);
         selRow = (int)(y/cellHeight);
+        firedSquares.add(new Point(selRow,selCol));
         invalidate();
         return true;
     }

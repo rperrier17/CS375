@@ -903,7 +903,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/startGameButton"
         android:text="Start Game!"
-        android:layout_below="@id/grid"
+        android:layout_alignParentBottom="true"
         android:background="#00ff00"/>
 
     <Button
