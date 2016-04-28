@@ -3,6 +3,7 @@ package com.gavettperrier.battleship;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +26,7 @@ public class PlayGameActivity extends AppCompatActivity {
 
         Button fire = (Button)findViewById(R.id.fireButton);
 
-        fire.setOnClickListener(new View.OnClickListener() {
+        /*fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (selectedButton != null) {
@@ -33,12 +34,12 @@ public class PlayGameActivity extends AppCompatActivity {
                     selectedButton = null;
                 }
             }
-        });
+        });*/
 
 
     }
 
-    public void myClickHandler(View v) {
+    /*public void myClickHandler(View v) {
         if(selectedButton != null) {
             selectedButton.setBackgroundColor(Color.WHITE);
         }
@@ -49,5 +50,5 @@ public class PlayGameActivity extends AppCompatActivity {
         //btn.setHighlightColor(0000F0);
         btn.setBackgroundColor(Color.YELLOW);
         selectedButton = btn;
-    }
+    }*/
 }

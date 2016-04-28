@@ -12,8 +12,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +28,10 @@ public class GridView extends View {
     int numCells = 10;
     protected int selCol = -1;
     protected int selRow = -1;
-    //private List<Point> firedSquares = new ArrayList<Point>();
-    private List<Computers_Ships> firedSquares = new ArrayList<Computers_Ships>();
-
+    private List<Point> firedSquares = new ArrayList<Point>();
+    //private List<Computers_Ships> firedSquares = new ArrayList<Computers_Ships>();
+    private List<Paint> paintSqColors = new ArrayList<Paint>();
+    private List<Point> compShipLocation = new ArrayList<Point>();
 
 
     public GridView(Context context, AttributeSet attrs) {
@@ -39,11 +42,12 @@ public class GridView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+
         //This is the paint for each cell of the grid
-        Paint gridSquPaint = new Paint();
+        final Paint gridSquPaint = new Paint();
         gridSquPaint.setColor(Color.WHITE);
 
-        Paint hitColor = new Paint();
+        final Paint hitColor = new Paint();
         hitColor.setColor(Color.RED);
         Paint missColor = new Paint();
         missColor.setColor(Color.YELLOW);
@@ -56,28 +60,25 @@ public class GridView extends View {
         int cellHeight = getHeight() / numCells;
 
         //Make the Grid
-        for(int row = 0; row < numCells; row++){
-            for (int col = 0; col < numCells; col++){
+        for(int col = 0; col < numCells; col++){
+            for (int row = 0; row < numCells; row++){
                 Paint p = gridSquPaint;
-                int x = row * cellWidth;
-                int y = col * cellHeight;
+                int x = col * cellWidth;
+                int y = row * cellHeight;
                 Rect rect = new Rect(x, y, x + cellWidth,y + cellHeight);
 
-                if(selCol == col && selRow == row){
-                    p = highlightSqPaint;
-                }
-                for(int i = 0; i < firedSquares.size(); i++)
-                {
-                    if(row == firedSquares.get(i).coordinates.x && col == firedSquares.get(i).coordinates.y)
-                    {
-                        if(firedSquares.get(i).coordinates.x == 0 && firedSquares.get(i).coordinates.y ==0)
-                            firedSquares.get(i).squColor = hitColor;
-                        else
-                            firedSquares.get(i).squColor = missColor;
-                        p = firedSquares.get(i).squColor;
+                if(selCol == col && selRow == row) {
+                    if(row == 0){
+                        p = hitColor;
+                    }
+                    else {
+                        p = missColor;
                     }
                 }
-                firedSquares.add(new Point((int)(x),(int)(y)));
+                /*paintSqColors.add(p);
+                for (int i = 0; i < firedSquares.size(); i++) {
+                    p = paintSqColors.get(i);
+                }*/
                 canvas.drawRect(rect,p);
                 p.setColor(Color.BLACK);
                 p.setStrokeWidth(5);
@@ -97,7 +98,7 @@ public class GridView extends View {
         float cellHeight = this.getHeight()/numCells;
         selCol = (int)(x/cellWidth);
         selRow = (int)(y/cellHeight);
-
+        firedSquares.add(new Point((int)(x),(int)(y)));
         invalidate();
         return true;
     }
