@@ -1,24 +1,13 @@
 package com.gavettperrier.battleship;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * TODO: document your custom view class.
@@ -28,33 +17,83 @@ public class GridView extends View {
     int numCells = 10;
     protected int selCol = -1;
     protected int selRow = -1;
-    private List<Point> firedSquares = new ArrayList<Point>();
-    //private List<Computers_Ships> firedSquares = new ArrayList<Computers_Ships>();
-    private List<Paint> paintSqColors = new ArrayList<Paint>();
-    private List<Point> compShipLocation = new ArrayList<Point>();
+    private int[][] computerShips = new int[10][10];
+    private int[][] hitGrid = new int[10][10]; //constructor, init to 0
 
+    /*
+    Note: For the arrays computerShips and hitGrid, each member corresponds
+            to a location on the actual grid.  If the member is initialized to 0,
+            the color on the grid is white.  If the member is 1, then there was a ship
+            there corresponding to a hit, so the color corresponding to that will be red.
+            If the member is 2, then there was not a ship there, so the corresponding
+            color will be yellow.
+     */
 
     public GridView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        //initialize the hitGrid array to all zeros
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 10; j++){
+                hitGrid[i][j] = 0;
+            }
+        }
+        setComputerShips();
+    }
+
+    /*
+    Note: In the setComputerShips function, the locations for the computer's ships are
+            set in the computerShips array.  In theory, this is where some AI would come
+            into the app.  In practicality for the scope of this class, however, this
+            will not be done with AI.
+     */
+    public void setComputerShips (){
+        //For now, just set the ships to the same locations each time
+        //Later on, have them go to random places
+        for (int i = 0; i < 10; i++){
+            for (int j = 0; j < 10; j++){
+                computerShips[i][j] = 2;
+            }
+        }
+        //Set ship length 5
+        computerShips[0][0] = 1;
+        computerShips[0][1] = 1;
+        computerShips[0][2] = 1;
+        computerShips[0][3] = 1;
+        computerShips[0][4] = 1;
+        //Set ship length 4
+        computerShips[6][4] = 1;
+        computerShips[6][5] = 1;
+        computerShips[6][6] = 1;
+        computerShips[6][7] = 1;
+        //Set ship length 3
+        computerShips[3][5] = 1;
+        computerShips[3][6] = 1;
+        computerShips[3][7] = 1;
+        //Set ship length 3
+        computerShips[3][2] = 1;
+        computerShips[4][2] = 1;
+        computerShips[5][2] = 1;
+        //Set ship length 2
+        computerShips[7][1] = 1;
+        computerShips[8][1] = 1;
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
         //This is the paint for each cell of the grid
         final Paint gridSquPaint = new Paint();
         gridSquPaint.setColor(Color.WHITE);
 
+        //Paint colors for hit and miss
         final Paint hitColor = new Paint();
         hitColor.setColor(Color.RED);
+
         Paint missColor = new Paint();
         missColor.setColor(Color.YELLOW);
 
-        //This is the paint for a highlighted square
-        Paint highlightSqPaint = new Paint();
-        highlightSqPaint.setColor(Color.GREEN);
 
         int cellWidth = getWidth() / numCells;
         int cellHeight = getHeight() / numCells;
@@ -66,22 +105,22 @@ public class GridView extends View {
                 int x = col * cellWidth;
                 int y = row * cellHeight;
                 Rect rect = new Rect(x, y, x + cellWidth,y + cellHeight);
+                //hitGrid[(int)(x/cellWidth)][(int)(y/cellHeight)] = computerShips[(int)(x/cellWidth)][(int)(y/cellHeight)];
+                    switch (hitGrid[col][row]) {
+                        case 0:
+                            p = gridSquPaint;
+                            break;
+                        case 1:
+                            p = hitColor;
+                            break;
+                        case 2:
+                            p = missColor;
+                            break;
+                    }
 
-                if(selCol == col && selRow == row) {
-                    if(row == 0){
-                        p = hitColor;
-                    }
-                    else {
-                        p = missColor;
-                    }
-                }
-                /*paintSqColors.add(p);
-                for (int i = 0; i < firedSquares.size(); i++) {
-                    p = paintSqColors.get(i);
-                }*/
                 canvas.drawRect(rect,p);
                 p.setColor(Color.BLACK);
-                p.setStrokeWidth(5);
+                p.setStrokeWidth(7);
                 p.setStyle(Paint.Style.STROKE);
                 canvas.drawRect(rect,p);
             }
@@ -98,7 +137,9 @@ public class GridView extends View {
         float cellHeight = this.getHeight()/numCells;
         selCol = (int)(x/cellWidth);
         selRow = (int)(y/cellHeight);
-        firedSquares.add(new Point((int)(x),(int)(y)));
+        //Set the correct hit in the hitGrid to color correctly
+        hitGrid[selCol][selRow] = computerShips[selCol][selRow];
+
         invalidate();
         return true;
     }
