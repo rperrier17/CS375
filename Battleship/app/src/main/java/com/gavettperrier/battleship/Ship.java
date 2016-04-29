@@ -15,14 +15,22 @@ import java.util.ArrayList;
 /**
  * Created by Rachel on 4/1/2016.
  */
-public class Ship extends View{
-    int cellWidth = getWidth() / 10;
-    int cellHeight = getHeight() / 10;
-    int selCol = 0;
-    int selRow = 0;
-    public Ship(Context context, AttributeSet attr){
-        super(context,attr);
+public class Ship{//Took out extends View
+    int cellWidth;
+    int cellHeight;
+    int xpos;
+    int ypos;
+    int size;
+    public Ship(int cellWidth,int cellHeight,int xpos, int ypos,int size){
+        this.cellWidth = cellWidth;
+        this.cellHeight = cellHeight;
+        this.xpos = xpos;
+        this.ypos = ypos;
+        this.size = size
     }
+    /*public Ship(Context context, AttributeSet attr){
+        super(context,attr);
+    }*/
     /*private GridPoint front;
     private GridPoint back;
     private ArrayList<Boolean> health;
@@ -35,15 +43,15 @@ public class Ship extends View{
             health.add(false);
         }
     }*/
-    @Override
+
     public void onDraw(Canvas canvas){
-        super.onDraw(canvas);
+        //super.onDraw(canvas);
         Paint p1 = new Paint();
         p1.setColor(Color.MAGENTA);
-        Rect rect = new Rect(selCol,selRow,selCol+cellWidth,selRow+cellHeight);
+        Rect rect = new Rect(xpos,ypos,xpos+cellWidth*size,ypos+cellHeight);
         canvas.drawRect(rect, p1);
     }
-    //Make so we can select squares
+    /*//Make so we can select squares
     public boolean onTouchEvent(MotionEvent event){
         super.onTouchEvent(event);
         float x = event.getX();
@@ -54,5 +62,5 @@ public class Ship extends View{
         selRow = (int)(y/cellHeight);
         invalidate();
         return true;
-    }
+    }*/
 }

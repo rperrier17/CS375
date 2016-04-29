@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * TODO: document your custom view class.
@@ -111,9 +113,13 @@ public class GridView extends View {
                             p = gridSquPaint;
                             break;
                         case 1:
+                            Toast.makeText(this.getContext(), "hit drawn", Toast.LENGTH_LONG);
+                            //Log.d("draw", "hit drawn");
                             p = hitColor;
                             break;
                         case 2:
+                            Toast.makeText(this.getContext(), "miss drawn", Toast.LENGTH_LONG);
+                            //Log.d("draw", "miss drawn");
                             p = missColor;
                             break;
                     }
@@ -139,6 +145,8 @@ public class GridView extends View {
         selRow = (int)(y/cellHeight);
         //Set the correct hit in the hitGrid to color correctly
         hitGrid[selCol][selRow] = computerShips[selCol][selRow];
+        //Toast.makeText(this.getContext(), String.format("col: %f, row: %f", (char)(selCol), (char)selRow), Toast.LENGTH_LONG);
+        //Log.d("touch", String.format("col: %f, row: %f", selCol, selRow));
 
         invalidate();
         return true;

@@ -42,7 +42,7 @@ public class ShipGridView extends View {
                 canvas.drawRect(rect,p);
             }
         }
-        
+
 
     }
 }

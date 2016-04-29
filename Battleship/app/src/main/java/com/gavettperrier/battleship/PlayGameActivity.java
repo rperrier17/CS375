@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ViewFlipper;
 
 public class PlayGameActivity extends AppCompatActivity {
 
@@ -23,6 +24,31 @@ public class PlayGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_play_game);
+        final ViewFlipper viewFlipper = (ViewFlipper)findViewById(R.id.viewFlip);
+        selectedButton = (Button)findViewById(R.id.toPlayer);
+        selectedButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                //Intent intent = new Intent(PlayGameActivity.this,)
+                if(viewFlipper.getDisplayedChild()==0)
+                {
+                    viewFlipper.showNext();
+                   // selectedButton = (Button)findViewById(R.id.toPlayer);
+                }
+                else {
+                    viewFlipper.showPrevious();
+                    //selectedButton = (Button)findViewById(R.id.toComputer);
+                }
+            }
+        });
+        /*friendPlayButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(NewGameActivity.this, FriendsListActivity.class);
+                startActivity(intent);
+            }
+        });*/
 
         //Button fire = (Button)findViewById(R.id.fireButton);
 
