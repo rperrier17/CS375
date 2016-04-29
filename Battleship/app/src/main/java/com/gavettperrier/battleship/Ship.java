@@ -1,13 +1,29 @@
 package com.gavettperrier.battleship;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Created by Rachel on 4/1/2016.
  */
-public class Ship {
-    private GridPoint front;
+public class Ship extends View{
+    int cellWidth = getWidth() / 10;
+    int cellHeight = getHeight() / 10;
+    int selCol = 0;
+    int selRow = 0;
+    public Ship(Context context, AttributeSet attr){
+        super(context,attr);
+    }
+    /*private GridPoint front;
     private GridPoint back;
     private ArrayList<Boolean> health;
     private Boolean horizontal;
@@ -18,5 +34,25 @@ public class Ship {
         for(int i = 0; i < length; i++){
             health.add(false);
         }
+    }*/
+    @Override
+    public void onDraw(Canvas canvas){
+        super.onDraw(canvas);
+        Paint p1 = new Paint();
+        p1.setColor(Color.MAGENTA);
+        Rect rect = new Rect(selCol,selRow,selCol+cellWidth,selRow+cellHeight);
+        canvas.drawRect(rect, p1);
+    }
+    //Make so we can select squares
+    public boolean onTouchEvent(MotionEvent event){
+        super.onTouchEvent(event);
+        float x = event.getX();
+        float y = event.getY();
+        float cellWidth = this.getWidth()/10;
+        float cellHeight = this.getHeight()/10;
+        selCol = (int)(x/cellWidth);
+        selRow = (int)(y/cellHeight);
+        invalidate();
+        return true;
     }
 }

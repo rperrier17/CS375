@@ -24,7 +24,7 @@ public class PlayGameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button fire = (Button)findViewById(R.id.fireButton);
+        //Button fire = (Button)findViewById(R.id.fireButton);
 
         /*fire.setOnClickListener(new View.OnClickListener() {
             @Override
