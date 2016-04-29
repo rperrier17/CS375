@@ -6,13 +6,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * Created by Rachel on 4/28/2016.
  */
 public class ShipGridView extends View {
-    private Ship ship1;
+    private Ship ship1, ship2, ship3, ship4, ship5;
     public ShipGridView(Context context, AttributeSet attr){
         super(context, attr);
     }
@@ -42,7 +43,21 @@ public class ShipGridView extends View {
                 canvas.drawRect(rect,p);
             }
         }
-
+        ship1 = new Ship(cellWidth,cellHeight,0,0,5);
+        ship1.onDraw(canvas);
+        ship2 = new Ship(cellWidth,cellHeight,0,cellHeight,4);
+        ship2.onDraw(canvas);
+        ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
+        ship3.onDraw(canvas);
+        ship4 = new Ship(cellWidth,cellHeight,0,cellHeight*3,3);
+        ship4.onDraw(canvas);
+        ship5 = new Ship(cellWidth,cellHeight,0,cellHeight*4,2);
+        ship5.onDraw(canvas);
 
     }
+    /*float dx,dy;
+
+    public boolean onTouchEvent(MotionEvent event,Ship ship){
+
+    }*/
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by Rachel on 4/1/2016.
  */
-public class Ship{//Took out extends View
+public class Ship {//Took out extends View
     int cellWidth;
     int cellHeight;
     int xpos;
@@ -27,6 +27,7 @@ public class Ship{//Took out extends View
         this.xpos = xpos;
         this.ypos = ypos;
         this.size = size;
+
     }
     /*public Ship(Context context, AttributeSet attr){
         super(context,attr);
@@ -63,4 +64,6 @@ public class Ship{//Took out extends View
         invalidate();
         return true;
     }*/
+
+
 }
