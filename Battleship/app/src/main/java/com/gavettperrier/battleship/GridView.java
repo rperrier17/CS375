@@ -20,7 +20,7 @@ public class GridView extends View {
     protected int selCol = -1;
     protected int selRow = -1;
     private int[][] computerShips = new int[10][10];
-    private int[][] hitGrid = new int[10][10]; //constructor, init to 0
+    private int[][] hitGrid = new int[10][10];
 
     /*
     Note: For the arrays computerShips and hitGrid, each member corresponds
@@ -96,6 +96,11 @@ public class GridView extends View {
         Paint missColor = new Paint();
         missColor.setColor(Color.YELLOW);
 
+        Paint outline = new Paint();
+        outline.setColor(Color.BLACK);
+        outline.setStrokeWidth(7);
+        outline.setStyle(Paint.Style.STROKE);
+
 
         int cellWidth = getWidth() / numCells;
         int cellHeight = getHeight() / numCells;
@@ -113,22 +118,15 @@ public class GridView extends View {
                             p = gridSquPaint;
                             break;
                         case 1:
-                            Toast.makeText(this.getContext(), "hit drawn", Toast.LENGTH_LONG);
-                            //Log.d("draw", "hit drawn");
                             p = hitColor;
                             break;
                         case 2:
-                            Toast.makeText(this.getContext(), "miss drawn", Toast.LENGTH_LONG);
-                            //Log.d("draw", "miss drawn");
                             p = missColor;
                             break;
                     }
 
-                canvas.drawRect(rect,p);
-                p.setColor(Color.BLACK);
-                p.setStrokeWidth(7);
-                p.setStyle(Paint.Style.STROKE);
-                canvas.drawRect(rect,p);
+                canvas.drawRect(rect, p);
+                canvas.drawRect(rect,outline);
             }
         }
 
@@ -143,11 +141,7 @@ public class GridView extends View {
         float cellHeight = this.getHeight()/numCells;
         selCol = (int)(x/cellWidth);
         selRow = (int)(y/cellHeight);
-        //Set the correct hit in the hitGrid to color correctly
         hitGrid[selCol][selRow] = computerShips[selCol][selRow];
-        //Toast.makeText(this.getContext(), String.format("col: %f, row: %f", (char)(selCol), (char)selRow), Toast.LENGTH_LONG);
-        //Log.d("touch", String.format("col: %f, row: %f", selCol, selRow));
-
         invalidate();
         return true;
     }
