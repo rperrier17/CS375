@@ -16,8 +16,10 @@ import android.widget.ViewFlipper;
 
 public class PlayGameActivity extends AppCompatActivity {
 
-    private Button selectedButton;
-
+    //private Button selectedButton = (Button)findViewById(R.id.toComputer);
+    //Button selectedButton;
+    Button compButton;
+    Button playButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,20 +28,34 @@ public class PlayGameActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_play_game);
         final ViewFlipper viewFlipper = (ViewFlipper)findViewById(R.id.viewFlip);
-        selectedButton = (Button)findViewById(R.id.toPlayer);
-        selectedButton.setOnClickListener(new View.OnClickListener(){
+        //selectedButton = (Button)findViewById(R.id.toComputer);
+        compButton = (Button)findViewById(R.id.toComputer);
+        playButton = (Button)findViewById(R.id.toPlayer);
+        /*selectedButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 //Intent intent = new Intent(PlayGameActivity.this,)
-                if(viewFlipper.getDisplayedChild()==0)
+                if(selectedButton == findViewById(R.id.toComputer))
                 {
                     viewFlipper.showNext();
-                   // selectedButton = (Button)findViewById(R.id.toPlayer);
+                   selectedButton = playButton;
                 }
-                else {
+                else if (selectedButton == findViewById(R.id.toPlayer)){
                     viewFlipper.showPrevious();
-                    //selectedButton = (Button)findViewById(R.id.toComputer);
+                    selectedButton = compButton;
                 }
+            }
+        });*/
+        compButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                viewFlipper.showNext();
+            }
+        });
+        playButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                viewFlipper.showPrevious();
             }
         });
         /*friendPlayButton.setOnClickListener(new View.OnClickListener(){

@@ -26,7 +26,7 @@ public class Ship{//Took out extends View
         this.cellHeight = cellHeight;
         this.xpos = xpos;
         this.ypos = ypos;
-        this.size = size
+        this.size = size;
     }
     /*public Ship(Context context, AttributeSet attr){
         super(context,attr);
