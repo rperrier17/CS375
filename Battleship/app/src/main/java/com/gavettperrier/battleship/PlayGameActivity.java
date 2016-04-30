@@ -58,6 +58,14 @@ public class PlayGameActivity extends AppCompatActivity {
                 viewFlipper.showPrevious();
             }
         });
+        Button endGameBtn = (Button)findViewById(R.id.endGame);
+        endGameBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(PlayGameActivity.this, WinnerActivity.class);
+                startActivity(intent);
+            }
+        });
         /*friendPlayButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

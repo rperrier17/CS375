@@ -54,7 +54,7 @@ public class ShipGridView extends View {
             }
         }
 
-        ship1 = new Ship(cellWidth, cellHeight, 0, 0, 5);
+        /*ship1 = new Ship(cellWidth, cellHeight, 0, 0, 5);
         ship2 = new Ship(cellWidth, cellHeight, 0, cellHeight, 4);
         ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
         ship4 = new Ship(cellWidth,cellHeight,0,cellHeight*3,3);
@@ -63,7 +63,7 @@ public class ShipGridView extends View {
         ship2.onDraw(canvas);
         ship3.onDraw(canvas);
         ship4.onDraw(canvas);
-        ship5.onDraw(canvas);
+        ship5.onDraw(canvas);*/
     }
 
     public boolean onTouch(View view, MotionEvent event) {

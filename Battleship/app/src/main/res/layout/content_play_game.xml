@@ -875,6 +875,12 @@
                 android:id="@+id/toComputer"
                 android:text="Computer's Turn"
                 android:layout_below="@id/textFire"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/endGame"
+                android:text="See the Winner!"
+                android:layout_below="@id/toComputer"/>
 
     <!--<Button
         android:layout_width="wrap_content"

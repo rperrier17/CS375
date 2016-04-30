@@ -850,7 +850,12 @@
             </Button>
         </TableRow>
     </TableLayout>-->
-
+    <com.gavettperrier.battleship.ShipGridView
+    android:layout_width="800px"
+    android:layout_height="800px"
+    android:id="@+id/view"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -897,12 +902,7 @@
                                         "
         android:background="#FF6A06"
         android:layout_toStartOf="@+id/ship3" />
-    <com.gavettperrier.battleship.ShipGridView
-        android:layout_width="800px"
-        android:layout_height="800px"
-        android:id="@+id/view"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

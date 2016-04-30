@@ -48,19 +48,19 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip4 = (TextView) mRrootLayout.findViewById(R.id.ship4);
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 300);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(80, 160);
         mShip1.setLayoutParams(layoutParams);
         mShip1.setOnTouchListener(this);
-        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(150,450);
+        RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(80,240);
         mShip2.setLayoutParams(layoutParams2);
         mShip2.setOnTouchListener(this);
-        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(150,450);
+        RelativeLayout.LayoutParams layoutParams3 = new RelativeLayout.LayoutParams(80,240);
         mShip3.setLayoutParams(layoutParams3);
         mShip3.setOnTouchListener(this);
-        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(150,600);
+        RelativeLayout.LayoutParams layoutParams4 = new RelativeLayout.LayoutParams(80,320);
         mShip4.setLayoutParams(layoutParams4);
         mShip4.setOnTouchListener(this);
-        RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(150,750);
+        RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(80,400);
         mShip5.setLayoutParams(layoutParams5);
         mShip5.setOnTouchListener(this);
 
