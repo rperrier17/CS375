@@ -849,7 +849,7 @@
                 android:layout_weight="1">
             </Button>
         </TableRow>
-    </TableLayout>
+    </TableLayout>-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -896,7 +896,7 @@
         android:text="
                                         "
         android:background="#FF6A06"
-        android:layout_toStartOf="@+id/ship3" />-->
+        android:layout_toStartOf="@+id/ship3" />
     <com.gavettperrier.battleship.ShipGridView
         android:layout_width="800px"
         android:layout_height="800px"

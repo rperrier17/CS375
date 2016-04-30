@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,6 +18,10 @@ import java.util.ArrayList;
  * Created by Rachel on 4/1/2016.
  */
 public class Ship {//Took out extends View
+    private int _xDelta;
+    private int _yDelta;
+    private ViewGroup mRootLayout;
+
     int cellWidth;
     int cellHeight;
     int xpos;
@@ -49,6 +55,7 @@ public class Ship {//Took out extends View
         //super.onDraw(canvas);
         Paint p1 = new Paint();
         p1.setColor(Color.MAGENTA);
+
         Rect rect = new Rect(xpos,ypos,xpos+cellWidth*size,ypos+cellHeight);
         canvas.drawRect(rect, p1);
     }
@@ -65,5 +72,36 @@ public class Ship {//Took out extends View
         return true;
     }*/
 
+    public boolean onTouch(View view, MotionEvent event) {
+        //selectedShip = (Ship) view;
+        Paint paint = new Paint();
+        paint.setColor(Color.CYAN);
+        final int X = (int) event.getRawX();
+        final int Y = (int) event.getRawY();
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                _xDelta = X - lParams.leftMargin;
+                _yDelta = Y - lParams.topMargin;
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
+                        .getLayoutParams();
+                layoutParams.leftMargin = X - _xDelta;
+                layoutParams.topMargin = Y - _yDelta;
+                layoutParams.rightMargin = -250;
+                layoutParams.bottomMargin = -250;
+                view.setLayoutParams(layoutParams);
+                break;
+        }
+        mRootLayout.invalidate();
+        return true;
+    }
 
 }
