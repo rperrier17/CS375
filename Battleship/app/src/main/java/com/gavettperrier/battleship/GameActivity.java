@@ -23,13 +23,13 @@ import android.widget.TextView;
 import android.view.MotionEvent;
 
 
-public class GameActivity extends AppCompatActivity implements View.OnTouchListener {
+public class GameActivity extends AppCompatActivity /*implements View.OnTouchListener*/ {
 
-    private TextView mShip1;
-    private TextView mShip2;
+    //private TextView mShip1;
+    /*private TextView mShip2;
     private TextView mShip3;
     private TextView mShip4;
-    private TextView mShip5;
+    private TextView mShip5;*/
     private TextView selectedShip;
     private ViewGroup mRrootLayout;
     private int _xDelta;
@@ -42,14 +42,14 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mRrootLayout = (ViewGroup) findViewById(R.id.root);
-        mShip1 = (TextView) mRrootLayout.findViewById(R.id.ship1);
+        /*mShip1 = (TextView) mRrootLayout.findViewById(R.id.ship1);
         mShip2 = (TextView) mRrootLayout.findViewById(R.id.ship2);
         mShip3 = (TextView) mRrootLayout.findViewById(R.id.ship3);
         mShip4 = (TextView) mRrootLayout.findViewById(R.id.ship4);
         mShip5 = (TextView) mRrootLayout.findViewById(R.id.ship5);
 
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(80, 160);
-        mShip1.setLayoutParams(layoutParams);
+        //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(80, 160);
+        //mShip1.setLayoutParams(layoutParams);
         mShip1.setOnTouchListener(this);
         RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(80,240);
         mShip2.setLayoutParams(layoutParams2);
@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         mShip4.setOnTouchListener(this);
         RelativeLayout.LayoutParams layoutParams5 = new RelativeLayout.LayoutParams(80,400);
         mShip5.setLayoutParams(layoutParams5);
-        mShip5.setOnTouchListener(this);
+        mShip5.setOnTouchListener(this);*/
 
         Button placeShips  = (Button)findViewById(R.id.startGameButton);
         placeShips.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         });
 
     }
-    public boolean onTouch(View view, MotionEvent event) {
+    /*public boolean onTouch(View view, MotionEvent event) {
         selectedShip = (TextView) view;
         final int X = (int) event.getRawX();
         final int Y = (int) event.getRawY();
@@ -116,7 +116,7 @@ public class GameActivity extends AppCompatActivity implements View.OnTouchListe
         }
         mRrootLayout.invalidate();
         return true;
-    }
+    }*/
 
     public void myClickHandler(View v){}
 

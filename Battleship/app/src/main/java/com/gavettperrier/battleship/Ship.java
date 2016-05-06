@@ -35,6 +35,8 @@ public class Ship {//Took out extends View
         this.size = size;
 
     }
+
+
     /*public Ship(Context context, AttributeSet attr){
         super(context,attr);
     }*/

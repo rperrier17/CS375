@@ -54,7 +54,7 @@ public class ShipGridView extends View {
             }
         }
 
-        /*ship1 = new Ship(cellWidth, cellHeight, 0, 0, 5);
+        ship1 = new Ship(cellWidth, cellHeight, 0, 0, 5);
         ship2 = new Ship(cellWidth, cellHeight, 0, cellHeight, 4);
         ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
         ship4 = new Ship(cellWidth,cellHeight,0,cellHeight*3,3);
@@ -63,16 +63,23 @@ public class ShipGridView extends View {
         ship2.onDraw(canvas);
         ship3.onDraw(canvas);
         ship4.onDraw(canvas);
-        ship5.onDraw(canvas);*/
+        ship5.onDraw(canvas);
+
     }
 
-    public boolean onTouch(View view, MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent motionEvent){
+        return this.onTouch(motionEvent);
+    }
+
+    public boolean onTouch(MotionEvent event) {
         //selectedShip = (Ship) view;
         final int X = (int) event.getRawX();
         final int Y = (int) event.getRawY();
+        //Find X,Y this ship is under, and update the X,Y for that ship.
+        //Math will be slightly different for changing the cordinates.
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) this.getLayoutParams();
                 _xDelta = X - lParams.leftMargin;
                 _yDelta = Y - lParams.topMargin;
                 break;
@@ -83,13 +90,13 @@ public class ShipGridView extends View {
             case MotionEvent.ACTION_POINTER_UP:
                 break;
             case MotionEvent.ACTION_MOVE:
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this
                         .getLayoutParams();
                 layoutParams.leftMargin = X - _xDelta;
                 layoutParams.topMargin = Y - _yDelta;
                 layoutParams.rightMargin = -250;
                 layoutParams.bottomMargin = -250;
-                view.setLayoutParams(layoutParams);
+                this.setLayoutParams(layoutParams);
                 break;
         }
         invalidate();
