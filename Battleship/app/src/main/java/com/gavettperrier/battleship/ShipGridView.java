@@ -21,10 +21,11 @@ public class ShipGridView extends View {
     //private ViewGroup mRrootLayout;
     private int _xDelta;
     private int _yDelta;
+    private int shipxpos = 0;
+    private int shipypos = 0;
+
     public ShipGridView(Context context, AttributeSet attr){
-
         super(context, attr);
-
 
     }
     @Override
@@ -34,6 +35,12 @@ public class ShipGridView extends View {
         //This is the paint for each cell of the grid
         final Paint gridSquPaint = new Paint();
         gridSquPaint.setColor(Color.WHITE);
+
+        Paint outline = new Paint();
+        outline.setColor(Color.BLACK);
+        outline.setStrokeWidth(7);
+        outline.setStyle(Paint.Style.STROKE);
+
 
         int cellWidth = getWidth() / 10;
         int cellHeight = getHeight() / 10;
@@ -47,29 +54,26 @@ public class ShipGridView extends View {
                 Rect rect = new Rect(x, y, x + cellWidth,y + cellHeight);
                 p = gridSquPaint;
                 canvas.drawRect(rect,p);
-                p.setColor(Color.BLACK);
-                p.setStrokeWidth(7);
-                p.setStyle(Paint.Style.STROKE);
-                canvas.drawRect(rect,p);
+                canvas.drawRect(rect,outline);
             }
         }
 
-        ship1 = new Ship(cellWidth, cellHeight, 0, 0, 5);
-        ship2 = new Ship(cellWidth, cellHeight, 0, cellHeight, 4);
+        ship1 = new Ship(cellWidth, cellHeight, shipxpos, shipypos, 5);
+        /*ship2 = new Ship(cellWidth, cellHeight, 0, cellHeight, 4);
         ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
         ship4 = new Ship(cellWidth,cellHeight,0,cellHeight*3,3);
-        ship5 = new Ship(cellWidth,cellHeight,0,cellHeight*4,2);
+        ship5 = new Ship(cellWidth,cellHeight,0,cellHeight*4,2);*/
         ship1.onDraw(canvas);
-        ship2.onDraw(canvas);
+        /*ship2.onDraw(canvas);
         ship3.onDraw(canvas);
         ship4.onDraw(canvas);
-        ship5.onDraw(canvas);
+        ship5.onDraw(canvas);*/
 
     }
 
-    public boolean dispatchTouchEvent(MotionEvent motionEvent){
+    /*public boolean dispatchTouchEvent(MotionEvent motionEvent){
         return this.onTouch(motionEvent);
-    }
+    }*/
 
     public boolean onTouch(MotionEvent event) {
         //selectedShip = (Ship) view;
@@ -77,27 +81,33 @@ public class ShipGridView extends View {
         final int Y = (int) event.getRawY();
         //Find X,Y this ship is under, and update the X,Y for that ship.
         //Math will be slightly different for changing the cordinates.
-        switch (event.getAction() & MotionEvent.ACTION_MASK) {
-            case MotionEvent.ACTION_DOWN:
-                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) this.getLayoutParams();
-                _xDelta = X - lParams.leftMargin;
-                _yDelta = Y - lParams.topMargin;
-                break;
-            case MotionEvent.ACTION_UP:
-                break;
-            case MotionEvent.ACTION_POINTER_DOWN:
-                break;
-            case MotionEvent.ACTION_POINTER_UP:
-                break;
-            case MotionEvent.ACTION_MOVE:
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this
-                        .getLayoutParams();
-                layoutParams.leftMargin = X - _xDelta;
-                layoutParams.topMargin = Y - _yDelta;
-                layoutParams.rightMargin = -250;
-                layoutParams.bottomMargin = -250;
-                this.setLayoutParams(layoutParams);
-                break;
+        {
+            switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                case MotionEvent.ACTION_DOWN:
+                    RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) this.getLayoutParams();
+                    _xDelta = X - lParams.leftMargin;
+                    _yDelta = Y - lParams.topMargin;
+                    //ship1.xpos  = _xDelta;
+                    //ship1.ypos = _yDelta;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    break;
+                case MotionEvent.ACTION_POINTER_DOWN:
+                    break;
+                case MotionEvent.ACTION_POINTER_UP:
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) this
+                            .getLayoutParams();
+                    layoutParams.leftMargin = X - _xDelta;
+                    layoutParams.topMargin = Y - _yDelta;
+                    layoutParams.rightMargin = -250;
+                    layoutParams.bottomMargin = -250;
+                    //this.setLayoutParams(layoutParams);
+                    shipxpos = layoutParams.leftMargin;
+                    shipypos = layoutParams.topMargin;
+                    break;
+            }
         }
         invalidate();
         return true;
@@ -108,7 +118,7 @@ public class ShipGridView extends View {
 
     }*/
 
-    AttributeSet attrs = new AttributeSet(){
+    /*AttributeSet attrs = new AttributeSet(){
         @Override
         public int getAttributeCount() {
             return 0;
@@ -218,5 +228,5 @@ public class ShipGridView extends View {
         public int getStyleAttribute() {
             return 0;
         }
-    };
+    };*/
 }
