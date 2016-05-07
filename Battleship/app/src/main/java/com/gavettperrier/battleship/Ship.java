@@ -18,22 +18,20 @@ import java.util.ArrayList;
  * Created by Rachel on 4/1/2016.
  */
 public class Ship {//Took out extends View
-    int _xDelta;
-    int _yDelta;
+    private int _xDelta;
+    private int _yDelta;
     private ViewGroup mRootLayout;
 
     int cellWidth;
     int cellHeight;
-    int xposfront;
-    int xposback;
-    int yposfront;
-    int yposback;
+    int xpos;
+    int ypos;
     int size;
-    public Ship(int cellWidth,int cellHeight,int xposfront, int yposfront,int size){
+    public Ship(int cellWidth,int cellHeight,int xpos, int ypos,int size){
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
-        this.xposfront = xposfront;
-        this.yposfront = yposfront;
+        this.xpos = xpos;
+        this.ypos = ypos;
         this.size = size;
 
     }
@@ -59,7 +57,7 @@ public class Ship {//Took out extends View
         //super.onDraw(canvas);
         Paint p1 = new Paint();
         p1.setColor(Color.MAGENTA);
-        Rect rect = new Rect(xposfront,yposfront,xposfront+cellWidth*size,yposfront+cellHeight);
+        Rect rect = new Rect(xpos,ypos,xpos+cellWidth*size,ypos+cellHeight);
         canvas.drawRect(rect, p1);
     }
     /*//Make so we can select squares
@@ -107,12 +105,12 @@ public class Ship {//Took out extends View
         return true;
     }
 
-    public boolean contains(int x, int y){
+    /*public boolean contains(int x, int y){
         if((x >= xposfront) && (x <= xposback) && (y >= yposfront) && (y <= yposback)) {
             return true;
         }
         else {
             return false;
         }
-    }
+    }*/
 }

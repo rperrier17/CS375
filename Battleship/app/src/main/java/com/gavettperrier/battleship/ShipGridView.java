@@ -23,6 +23,8 @@ public class ShipGridView extends View {
     private int _yDelta;
     private int shipxpos = 0;
     private int shipypos = 0;
+    //Array to hold ship positions...Will need to make global eventually
+    int shipPositions[][] = new int[10][10];
 
     public ShipGridView(Context context, AttributeSet attr){
         super(context, attr);
@@ -31,6 +33,13 @@ public class ShipGridView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        //Initialize the amount the ship array
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                shipPositions[i][j] = 2;
+            }
+        }
 
         //This is the paint for each cell of the grid
         final Paint gridSquPaint = new Paint();
@@ -59,21 +68,22 @@ public class ShipGridView extends View {
         }
 
         ship1 = new Ship(cellWidth, cellHeight, shipxpos, shipypos, 5);
-        /*ship2 = new Ship(cellWidth, cellHeight, 0, cellHeight, 4);
-        ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
+        ship2 = new Ship(cellWidth, cellHeight, shipxpos, shipypos + cellHeight, 4);
+        /*ship3 = new Ship(cellWidth,cellHeight,0,cellHeight*2,3);
         ship4 = new Ship(cellWidth,cellHeight,0,cellHeight*3,3);
         ship5 = new Ship(cellWidth,cellHeight,0,cellHeight*4,2);*/
         ship1.onDraw(canvas);
-        /*ship2.onDraw(canvas);
-        ship3.onDraw(canvas);
+        ship2.onDraw(canvas);
+        /*ship3.onDraw(canvas);
         ship4.onDraw(canvas);
         ship5.onDraw(canvas);*/
+        //shipPositions[shipxpos][shipypos] = 1;
 
     }
 
-    /*public boolean dispatchTouchEvent(MotionEvent motionEvent){
+    public boolean dispatchTouchEvent(MotionEvent motionEvent){
         return this.onTouch(motionEvent);
-    }*/
+    }
 
     public boolean onTouch(MotionEvent event) {
         //selectedShip = (Ship) view;
@@ -120,113 +130,5 @@ public class ShipGridView extends View {
 
     /*AttributeSet attrs = new AttributeSet(){
         @Override
-        public int getAttributeCount() {
-            return 0;
-        }
-
-        @Override
-        public String getAttributeName(int index) {
-            return null;
-        }
-
-        @Override
-        public String getAttributeValue(int index) {
-            return null;
-        }
-
-        @Override
-        public String getAttributeValue(String namespace, String name) {
-            return null;
-        }
-
-        @Override
-        public String getPositionDescription() {
-            return null;
-        }
-
-        @Override
-        public int getAttributeNameResource(int index) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeListValue(String namespace, String attribute, String[] options, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public boolean getAttributeBooleanValue(String namespace, String attribute, boolean defaultValue) {
-            return false;
-        }
-
-        @Override
-        public int getAttributeResourceValue(String namespace, String attribute, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeIntValue(String namespace, String attribute, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeUnsignedIntValue(String namespace, String attribute, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public float getAttributeFloatValue(String namespace, String attribute, float defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeListValue(int index, String[] options, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public boolean getAttributeBooleanValue(int index, boolean defaultValue) {
-            return false;
-        }
-
-        @Override
-        public int getAttributeResourceValue(int index, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeIntValue(int index, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getAttributeUnsignedIntValue(int index, int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public float getAttributeFloatValue(int index, float defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public String getIdAttribute() {
-            return null;
-        }
-
-        @Override
-        public String getClassAttribute() {
-            return null;
-        }
-
-        @Override
-        public int getIdAttributeResourceValue(int defaultValue) {
-            return 0;
-        }
-
-        @Override
-        public int getStyleAttribute() {
-            return 0;
-        }
-    };*/
+        public*/
 }
